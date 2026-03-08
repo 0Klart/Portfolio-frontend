@@ -1,0 +1,113 @@
+/* ============================================================
+   HERO SECTION
+============================================================ */
+
+#hero {
+  background: linear-gradient(160deg, var(--color-surface) 0%, var(--color-bg) 65%);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0 4.5rem;
+}
+
+/* Decorative circles */
+#hero::before,
+#hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(31, 42, 62, 0.5);
+  pointer-events: none;
+}
+
+#hero::before {
+  width: 500px;
+  height: 500px;
+  bottom: -120px;
+  right: -60px;
+}
+
+#hero::after {
+  width: 700px;
+  height: 700px;
+  bottom: -200px;
+  right: -120px;
+  border-color: rgba(31, 42, 62, 0.25);
+}
+
+.hero-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.hero-avatar-placeholder {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.hero-status {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  background: var(--color-success);
+  border-radius: 50%;
+  border: 3px solid var(--color-bg);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+.hero-name {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.25rem;
+}
+
+.hero-bio {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 1.75rem;
+}
+
+.hero-bio strong {
+  color: var(--color-link);
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  #top-bar .d-flex {
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+  }
+
+  .hero-name {
+    font-size: 2.5rem;
+  }
+}

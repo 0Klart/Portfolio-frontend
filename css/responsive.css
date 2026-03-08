@@ -1,0 +1,83 @@
+/* ============================================================
+   RESPONSIVE DESIGN
+============================================================ */
+
+@media (max-width: 992px) {
+  .container-lg {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-gap: 3rem;
+  }
+
+  #top-bar .d-flex {
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+  }
+
+  .hero-name {
+    font-size: 2.5rem;
+  }
+
+  .navbar-nav .nav-link {
+    margin: 0;
+  }
+
+  .hero-bio {
+    max-width: 100%;
+  }
+
+  .d-flex.gap-3.flex-wrap {
+    flex-direction: column;
+  }
+
+  .d-flex.gap-3.flex-wrap > * {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    font-size: 0.875rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
+
+  .hero-avatar-placeholder,
+  .hero-avatar {
+    width: 72px;
+    height: 72px;
+    font-size: 2rem;
+  }
+
+  #contact h2 {
+    font-size: 1.75rem;
+  }
+
+  .contact-form .form-control {
+    font-size: 0.8125rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .btn-primary-custom,
+  .btn-secondary-custom {
+    width: 100%;
+    text-align: center;
+  }
+
+  .section-label {
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+  }
+
+  .section-label span {
+    font-size: 0.625rem;
+  }
+}

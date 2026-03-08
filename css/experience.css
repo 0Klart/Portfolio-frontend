@@ -1,0 +1,82 @@
+/* ============================================================
+   EXPERIENCE SECTION (Timeline)
+============================================================ */
+
+#experience {
+  padding: var(--section-gap) 0;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+  padding-bottom: 2.5rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.timeline-dot.education {
+  background: var(--color-link);
+}
+
+.timeline-line {
+  position: absolute;
+  left: 4px;
+  top: 18px;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-border);
+}
+
+.timeline-item:last-child .timeline-line {
+  display: none;
+}
+
+.job-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.job-company {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.job-date {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  color: var(--color-text-faint);
+  letter-spacing: 0.1em;
+}
+
+.job-bullets {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.job-bullets li {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.35rem;
+  line-height: 1.6;
+}

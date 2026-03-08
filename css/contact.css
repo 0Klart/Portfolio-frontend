@@ -1,0 +1,94 @@
+/* ============================================================
+   CONTACT SECTION
+============================================================ */
+
+#contact {
+  padding: var(--section-gap) 0;
+  background: var(--color-surface-deep);
+}
+
+#contact h2 {
+  font-size: 2.25rem;
+}
+
+.contact-intro {
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+  line-height: 1.8;
+}
+
+.contact-info-list {
+  font-size: 0.875rem;
+  color: var(--color-text-faint);
+}
+
+.contact-info-item {
+  margin-bottom: 0.5rem;
+}
+
+.contact-info-item a {
+  color: var(--color-link);
+}
+
+.contact-info-item a:hover {
+  color: var(--color-accent);
+}
+
+.contact-icon {
+  margin-right: 0.5rem;
+  color: var(--color-accent);
+}
+
+/* Form Styles */
+.contact-form {
+  width: 100%;
+}
+
+.contact-form .form-control,
+.contact-form .form-control:focus {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  box-shadow: none;
+}
+
+.contact-form .form-control:focus {
+  border-color: var(--color-accent);
+}
+
+.contact-form .form-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.contact-form .invalid-feedback {
+  display: block;
+  color: #f87171;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.form-status {
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.form-status.success {
+  color: var(--color-success);
+}
+
+.form-status.error {
+  color: #f87171;
+}

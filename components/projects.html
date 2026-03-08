@@ -1,0 +1,21 @@
+<!-- Projects Section (GitHub API) -->
+<section id="projects" aria-labelledby="projects-heading">
+  <div class="container-lg">
+    <div class="section-label"><span>GitHub Projects</span></div>
+    <h2 class="visually-hidden" id="projects-heading">GitHub Projects</h2>
+
+    <!-- Cards injected here by fetchGitHubRepos() -->
+    <div id="github-projects" class="row g-3" aria-live="polite" aria-label="GitHub repositories">
+      <div class="col-12 text-center py-4" style="color:var(--color-text-faint);">
+        <div class="spinner-border spinner-border-sm me-2" role="status" aria-label="Loading projects"></div>
+        Loading projects…
+      </div>
+    </div>
+
+    <p class="mt-4" style="font-size:0.8125rem; color:var(--color-text-faint);">
+      <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener noreferrer">
+        View all repositories on GitHub <i class="bi bi-arrow-right" aria-hidden="true"></i>
+      </a>
+    </p>
+  </div>
+</section>

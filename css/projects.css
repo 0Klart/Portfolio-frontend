@@ -1,0 +1,65 @@
+/* ============================================================
+   PROJECTS SECTION (GitHub — populated via JS)
+============================================================ */
+
+#projects {
+  padding: var(--section-gap) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  height: 100%;
+  transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-card:hover {
+  border-color: rgba(200, 169, 110, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+}
+
+.project-name {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-link);
+}
+
+.project-desc {
+  font-size: 0.8125rem;
+  color: var(--color-text-faint);
+  flex: 1;
+  line-height: 1.55;
+}
+
+.project-meta {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  color: var(--color-text-faint);
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-lang {
+  color: var(--color-accent);
+}
+
+.projects-loading {
+  color: var(--color-text-faint);
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.projects-empty {
+  color: var(--color-text-faint);
+  font-size: 0.875rem;
+}

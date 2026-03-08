@@ -1,0 +1,24 @@
+/* ============================================================
+   DESIGN TOKENS — change your entire color scheme here only
+============================================================ */
+
+:root {
+  --color-bg:           #181e2c;   /* page background        */
+  --color-surface:      #1a2235;   /* cards, navbar          */
+  --color-surface-deep: #111622;   /* top bar, footer        */
+  --color-border:       #1f2a3e;   /* all borders            */
+  --color-accent:       #c8a96e;   /* gold — buttons, labels */
+  --color-accent-hover: #b8944e;   /* gold hover state       */
+  --color-text:         #dce4f0;   /* primary text           */
+  --color-text-muted:   #6b7fa0;   /* secondary text         */
+  --color-text-faint:   #3d4f6b;   /* labels, metadata       */
+  --color-link:         #9ab0cc;   /* inline links           */
+  --color-success:      #4ade80;   /* success state          */
+
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  --radius-sm:   3px;
+  --radius-md:   6px;
+  --section-gap: 5rem;
+}

@@ -1,0 +1,27 @@
+/* ============================================================
+   UTILITIES
+============================================================ */
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-muted-custom {
+  color: var(--color-text-muted);
+}
+
+.text-faint {
+  color: var(--color-text-faint);
+}
+
+.border-theme {
+  border-color: var(--color-border) !important;
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-surface-deep {
+  background-color: var(--color-surface-deep);
+}

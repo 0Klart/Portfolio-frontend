@@ -1,0 +1,43 @@
+/* ============================================================
+   ABOUT SECTION
+============================================================ */
+
+#about {
+  padding: var(--section-gap) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+#about h2 {
+  font-size: 2rem;
+}
+
+#about .bio-text {
+  color: var(--color-text-muted);
+  line-height: 1.85;
+}
+
+#about .bio-text strong {
+  color: var(--color-link);
+  font-weight: 400;
+}
+
+#about .info-list {
+  font-size: 0.875rem;
+}
+
+#about .info-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#about .info-label {
+  color: var(--color-text-faint);
+  min-width: 80px;
+  font-weight: 400;
+}
+
+#about .info-value {
+  color: var(--color-text-muted);
+  margin: 0;
+}
