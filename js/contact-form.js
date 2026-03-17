@@ -4,8 +4,9 @@
  * POSTs JSON to your .NET Minimal API.
  * ============================================================
  */
-//https://sebban-web-app-resume.azurewebsites.net/api/contact
-const API_URL = window.CONTACT_API_URL || 'https://sebban-web-app-resume.azurewebsites.net/api/contact'//'http://localhost:5276/api/contact'; // override with global for deployed envs
+const API_URL =
+  window.CONTACT_API_URL ||
+  'https://sebban-web-app-resume-fhczdcepaed3dehj.westeurope-01.azurewebsites.net/api/contact';
 
 function initializeContactForm() {
   const form = document.getElementById('contact-form');
@@ -71,8 +72,14 @@ function initializeContactForm() {
     } catch (error) {
       status.classList.add('error');
       status.classList.remove('success');
-      status.textContent = error.message || 'Something went wrong. Please email me directly.';
+      const isNetworkError = error instanceof TypeError;
+      status.textContent = isNetworkError
+        ? 'The contact service is unavailable right now. Please try again later or email me directly.'
+        : error.message || 'Something went wrong. Please email me directly.';
       console.error('Form submission error:', error);
+      if (isNetworkError) {
+        console.error('Contact API URL:', API_URL);
+      }
     } finally {
       btn.disabled = false;
       btn.innerHTML = 'Send Message <i class="bi bi-send ms-2" aria-hidden="true"></i>';
