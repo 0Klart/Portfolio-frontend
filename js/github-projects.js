@@ -1,58 +1,188 @@
 /**
  * ============================================================
  * GITHUB PROJECTS
- * Fetches your public pinned/top repos from the GitHub REST API.
- * TODO: Replace GITHUB_USERNAME with your actual username.
+ * Fetches public repositories from the GitHub REST API.
+ * Uses a short local cache to stay resilient when GitHub is slow
+ * or rate limited.
  * ============================================================
  */
 
-const GITHUB_USERNAME = 'YOUR_GITHUB_USERNAME'; // <-- TODO: change this
+const GITHUB_USERNAME = '0Klart';
+const GITHUB_REPOS_URL =
+  `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100&type=owner`;
+const GITHUB_CACHE_KEY = `github-projects:${GITHUB_USERNAME}:v3`;
+const GITHUB_CACHE_TTL_MS = 30 * 60 * 1000;
 
-async function fetchGitHubRepos() {
-  const container = document.getElementById('github-projects');
-  
-  if (!container) return;
-  
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function formatUpdatedDate(value) {
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return 'Recently updated';
+  }
+
+  return `Updated ${date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })}`;
+}
+
+function readRepoCache() {
   try {
-    // const res = await fetch(
-    //   `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6&type=public`
-    // );
-    
-    if (!res.ok) throw new Error('GitHub API error');
-    
-    const repos = await res.json();
+    const raw = localStorage.getItem(GITHUB_CACHE_KEY);
+    if (!raw) return null;
 
-    if (!repos.length) {
-      container.innerHTML = '<p class="projects-empty">No public repositories found.</p>';
-      return;
+    const parsed = JSON.parse(raw);
+    if (!parsed || !Array.isArray(parsed.repos) || typeof parsed.timestamp !== 'number') {
+      return null;
     }
 
-    container.innerHTML = repos.map(repo => `
-      <div class="col-sm-6 col-lg-4">
-        <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer"
-           class="project-card" aria-label="${repo.name} — ${repo.description || 'GitHub repository'}">
-          <div class="project-name">📁 ${repo.name}</div>
-          <div class="project-desc">${repo.description || 'No description provided.'}</div>
-          <div class="project-meta">
-            <span class="project-lang">${repo.language || '—'}</span>
-            <span>⭐ ${repo.stargazers_count}</span>
-          </div>
-        </a>
-      </div>
-    `).join('');
-
-  } catch (err) {
-    container.innerHTML = `
-      <div class="col-12">
-        <p class="projects-empty">
-          Could not load GitHub projects. 
-          <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
-        </p>
-      </div>`;
+    return parsed;
+  } catch {
+    return null;
   }
 }
 
-// Initialize after components are loaded
+function writeRepoCache(repos) {
+  try {
+    localStorage.setItem(
+      GITHUB_CACHE_KEY,
+      JSON.stringify({
+        timestamp: Date.now(),
+        repos,
+      })
+    );
+  } catch {
+    // Ignore cache write failures.
+  }
+}
+
+function sortRepos(repos) {
+  return [...repos]
+    .filter((repo) => !repo.archived)
+    .sort((a, b) => {
+      if (a.fork !== b.fork) {
+        return Number(a.fork) - Number(b.fork);
+      }
+
+      return new Date(b.pushed_at || b.updated_at) - new Date(a.pushed_at || a.updated_at);
+    });
+}
+
+function renderRepo(repo) {
+  const description = escapeHtml(repo.description || 'Project details are maintained directly on GitHub.');
+  const language = escapeHtml(repo.language || 'Mixed stack');
+  const repoType = repo.fork
+    ? '<span class="project-badge">Fork</span>'
+    : '<span class="project-badge project-badge-original">Original</span>';
+  const homepage = typeof repo.homepage === 'string' && repo.homepage.trim().length > 0
+    ? `<a href="${escapeHtml(repo.homepage)}" target="_blank" rel="noopener noreferrer">Live site</a>`
+    : '';
+
+  return `
+    <div class="col-sm-6 col-xl-4">
+      <article class="project-card" aria-label="${escapeHtml(repo.name)} project card">
+        <div class="project-card-top">
+          <div class="project-title-row">
+            <div class="project-name">${escapeHtml(repo.name)}</div>
+            <div class="project-badges">
+              ${repoType}
+              <span class="project-badge">${language}</span>
+            </div>
+          </div>
+          <div class="project-desc">${description}</div>
+        </div>
+        <div class="project-meta">
+          <span class="project-lang">${language}</span>
+          <span>${escapeHtml(formatUpdatedDate(repo.pushed_at || repo.updated_at))}</span>
+        </div>
+        <div class="project-link-text">
+          <a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noopener noreferrer">View repo</a>
+          ${homepage}
+        </div>
+      </article>
+    </div>`;
+}
+
+function renderProjects(container, summary, repos, { fromCache = false } = {}) {
+  const orderedRepos = sortRepos(repos);
+
+  if (!orderedRepos.length) {
+    container.innerHTML = '<div class="col-12"><p class="projects-empty">No public repositories found right now.</p></div>';
+    if (summary) {
+      summary.textContent = 'No public repositories were returned from GitHub.';
+    }
+    return;
+  }
+
+  container.innerHTML = orderedRepos.map((repo) => renderRepo(repo)).join('');
+
+  if (summary) {
+    summary.textContent = `Showing ${orderedRepos.length} public repositories from GitHub${fromCache ? ' (cached)' : ''}.`;
+  }
+}
+
+async function fetchGitHubRepos() {
+  const container = document.getElementById('github-projects');
+  const summary = document.getElementById('projects-summary');
+
+  if (!container) return;
+
+  const cached = readRepoCache();
+  const hasFreshCache = cached && (Date.now() - cached.timestamp) < GITHUB_CACHE_TTL_MS;
+
+  if (hasFreshCache) {
+    renderProjects(container, summary, cached.repos, { fromCache: true });
+  }
+
+  try {
+    const res = await fetch(GITHUB_REPOS_URL, {
+      headers: {
+        Accept: 'application/vnd.github+json',
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(`GitHub API error (${res.status})`);
+    }
+
+    const repos = await res.json();
+    if (!Array.isArray(repos)) {
+      throw new Error('Unexpected GitHub API response');
+    }
+
+    writeRepoCache(repos);
+    renderProjects(container, summary, repos);
+  } catch (error) {
+    if (cached?.repos?.length) {
+      renderProjects(container, summary, cached.repos, { fromCache: true });
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="col-12">
+        <p class="projects-empty">
+          Could not load GitHub projects.
+          <a href="https://github.com/${GITHUB_USERNAME}?tab=repositories" target="_blank" rel="noopener noreferrer">View the full profile instead.</a>
+        </p>
+      </div>`;
+
+    if (summary) {
+      summary.textContent = 'GitHub is unavailable right now, but the full profile link is still available.';
+    }
+
+    console.error('GitHub project load failed:', error);
+  }
+}
+
 document.addEventListener('componentsLoaded', fetchGitHubRepos);
-// Fallback for DOMContentLoaded if page is already loaded
 fetchGitHubRepos();

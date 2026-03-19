@@ -1,21 +1,29 @@
-<!-- Projects Section (GitHub API) -->
+<!-- Projects Section -->
 <section id="projects" aria-labelledby="projects-heading">
   <div class="container-lg">
-    <div class="section-label"><span>GitHub Projects</span></div>
-    <h2 class="visually-hidden" id="projects-heading">GitHub Projects</h2>
-
-    <!-- Cards injected here by fetchGitHubRepos() -->
-    <div id="github-projects" class="row g-3" aria-live="polite" aria-label="GitHub repositories">
-      <div class="col-12 text-center py-4" style="color:var(--color-text-faint);">
-        <div class="spinner-border spinner-border-sm me-2" role="status" aria-label="Loading projects"></div>
-        Loading projects…
+    <div class="section-label"><span>Public Projects</span></div>
+    <div class="projects-heading-row">
+      <div>
+        <h2 class="projects-heading" id="projects-heading">Live from GitHub</h2>
+        <p class="projects-intro">
+          Public repositories pulled directly from GitHub. Original work is shown first, with forks clearly labeled.
+        </p>
+        <p class="projects-summary" id="projects-summary">Loading public repositories...</p>
       </div>
+      <a
+        class="projects-profile-link"
+        href="https://github.com/0Klart"
+        target="_blank"
+        rel="noopener noreferrer">
+        View all on GitHub <i class="bi bi-arrow-up-right ms-1" aria-hidden="true"></i>
+      </a>
     </div>
 
-    <p class="mt-4" style="font-size:0.8125rem; color:var(--color-text-faint);">
-      <a href="https://github.com/0Klart" target="_blank" rel="noopener noreferrer">
-        View all repositories on GitHub <i class="bi bi-arrow-right" aria-hidden="true"></i>
-      </a>
-    </p>
+    <div id="github-projects" class="row g-3" aria-live="polite" aria-label="GitHub repositories">
+      <div class="col-12 projects-loading">
+        <div class="spinner-border spinner-border-sm me-2" role="status" aria-label="Loading projects"></div>
+        Loading projects...
+      </div>
+    </div>
   </div>
 </section>
