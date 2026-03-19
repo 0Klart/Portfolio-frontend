@@ -7,52 +7,85 @@
       <div class="col-md-5">
         <h2 id="contact-heading">Let's work<br />together.</h2>
         <p class="contact-intro">
-          Open to full-time roles, freelance projects, and collaborations.
-          Send me a message and I'll get back to you within a day.
+          Available for remote or on-site work in Orebro. Use the form below or connect through email, LinkedIn, and GitHub.
+          This site keeps the direct contact path public without exposing private documents.
         </p>
         <div class="contact-info-list mt-4">
           <div class="contact-info-item">
             <i class="bi bi-envelope contact-icon" aria-hidden="true"></i>
-            <a href="mailto:your@email.com">your@email.com</a>
+            <a href="mailto:sebastianwallden90@gmail.com">sebastianwallden90@gmail.com</a>
+          </div>
+          <div class="contact-info-item">
+            <i class="bi bi-linkedin contact-icon" aria-hidden="true"></i>
+            <a href="https://www.linkedin.com/in/sebastianwallden/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
+          </div>
+          <div class="contact-info-item">
+            <i class="bi bi-github contact-icon" aria-hidden="true"></i>
+            <a href="https://github.com/0Klart" target="_blank" rel="noopener noreferrer">GitHub profile</a>
           </div>
           <div class="contact-info-item">
             <i class="bi bi-geo-alt contact-icon" aria-hidden="true"></i>
-            Sweden
+            Orebro, Sweden
           </div>
         </div>
       </div>
 
       <div class="col-md-7">
-        <!-- NOTE: This form POSTs to your .NET Minimal API endpoint -->
-        <!-- See: /api/contact  (to be built in ASP.NET Core) -->
         <form id="contact-form" class="contact-form" novalidate aria-label="Contact form">
-
           <div class="row g-3">
             <div class="col-sm-6">
               <label class="form-label" for="contact-name">Name</label>
-              <input type="text" id="contact-name" name="name" class="form-control"
-                placeholder="Your name" required aria-required="true" autocomplete="name" />
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                class="form-control"
+                placeholder="Your name"
+                required
+                aria-required="true"
+                autocomplete="name" />
               <div class="invalid-feedback">Please enter your name.</div>
             </div>
             <div class="col-sm-6">
               <label class="form-label" for="contact-email">Email</label>
-              <input type="email" id="contact-email" name="email" class="form-control"
-                placeholder="your@email.com" required aria-required="true" autocomplete="email" />
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                class="form-control"
+                placeholder="your@email.com"
+                required
+                aria-required="true"
+                autocomplete="email" />
               <div class="invalid-feedback">Please enter a valid email address.</div>
             </div>
           </div>
 
           <div class="mt-3">
             <label class="form-label" for="contact-subject">Subject</label>
-            <input type="text" id="contact-subject" name="subject" class="form-control"
-              placeholder="What is this about?" required minlength="2" maxlength="200" aria-required="true" />
+            <input
+              type="text"
+              id="contact-subject"
+              name="subject"
+              class="form-control"
+              placeholder="What is this about?"
+              required
+              minlength="2"
+              maxlength="200"
+              aria-required="true" />
             <div class="invalid-feedback">Please add a subject (at least 2 characters).</div>
           </div>
 
           <div class="mt-3">
             <label class="form-label" for="contact-message">Message</label>
-            <textarea id="contact-message" name="message" class="form-control"
-              placeholder="Tell me about your project or opportunity..." required minlength="10" maxlength="2000"
+            <textarea
+              id="contact-message"
+              name="message"
+              class="form-control"
+              placeholder="Tell me about your project or opportunity..."
+              required
+              minlength="10"
+              maxlength="2000"
               aria-required="true"></textarea>
             <div class="invalid-feedback">Please write a message (at least 10 characters).</div>
           </div>
@@ -64,9 +97,7 @@
             </button>
           </div>
 
-          <!-- Status message for screen readers -->
           <div id="form-status" role="status" aria-live="polite" class="form-status"></div>
-
         </form>
       </div>
     </div>

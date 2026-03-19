@@ -36,8 +36,7 @@
   border-bottom-color: var(--color-accent);
 }
 
-/* Download CV button in nav */
-.btn-nav-cv {
+.btn-nav-cta {
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   color: var(--color-accent);
@@ -49,7 +48,7 @@
   text-decoration: none;
 }
 
-.btn-nav-cv:hover {
+.btn-nav-cta:hover {
   background: var(--color-accent);
   color: var(--color-surface-deep);
   text-decoration: none;

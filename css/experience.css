@@ -8,6 +8,22 @@
   background: var(--color-surface);
 }
 
+.experience-heading {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.experience-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.experience-timeline {
+  max-width: 760px;
+}
+
 .timeline-item {
   position: relative;
   padding-left: 2rem;
@@ -79,4 +95,65 @@
   color: var(--color-text-muted);
   margin-bottom: 0.35rem;
   line-height: 1.6;
+}
+
+.experience-side-panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(13, 18, 32, 0.55);
+  padding: 1.25rem;
+  position: sticky;
+  top: 6rem;
+}
+
+.experience-panel-title {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.project-note + .project-note {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.project-note-title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  margin-bottom: 0.3rem;
+  color: var(--color-link);
+}
+
+.project-note-meta {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: 0.65rem;
+}
+
+.project-note-text {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 0.65rem;
+}
+
+.project-note-stack {
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .experience-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-side-panel {
+    position: static;
+  }
 }
