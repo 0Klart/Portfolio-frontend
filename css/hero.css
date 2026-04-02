@@ -65,7 +65,7 @@
   right: -4px;
   width: 16px;
   height: 16px;
-  background: var(--color-success);
+  background: #f59e0b;
   border-radius: 50%;
   border: 3px solid var(--color-bg);
 }
