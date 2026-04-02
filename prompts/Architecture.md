@@ -13,7 +13,8 @@
 - Domain and DNS target: Cloudflare-managed `sebastianwallden.dev`.
 - Backend hosting target: Azure App Service.
 - Mail provider target: Gmail over SMTP for now.
-- Intended primary public domain: `https://www.sebastianwallden.dev`.
+- Primary public domain: `https://sebastianwallden.dev`.
+- Alternate public domain: `https://www.sebastianwallden.dev`.
 
 ## Integration assumptions
 

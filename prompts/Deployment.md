@@ -4,6 +4,7 @@
 
 - Primary deployment target is GitHub Pages.
 - Public domain is managed in Cloudflare.
+- Live public URL is `https://sebastianwallden.dev`.
 - Relative asset and component paths must remain valid when hosted from either a project site path or a future custom domain.
 - If the live domain changes again, update any explicit GitHub Pages references accordingly.
 
