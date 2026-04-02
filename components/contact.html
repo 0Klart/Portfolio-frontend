@@ -5,15 +5,34 @@
 
     <div class="row align-items-start g-5">
       <div class="col-md-5">
-        <h2 id="contact-heading">Let's work<br />together.</h2>
+        <h2 id="contact-heading">Let's<br />connect.</h2>
         <p class="contact-intro">
-          Available for remote or on-site work in Orebro. Use the form below or connect through email, LinkedIn, and GitHub.
-          This site keeps the direct contact path public without exposing private documents.
+          I currently work at CGI and am not looking to change roles right now, but you are very welcome to reach out
+          through the form below or connect through email, LinkedIn, and GitHub. This site keeps the direct contact
+          path public without exposing private documents.
         </p>
         <div class="contact-info-list mt-4">
           <div class="contact-info-item">
             <i class="bi bi-envelope contact-icon" aria-hidden="true"></i>
-            <a href="mailto:sebastianwallden90@gmail.com">sebastianwallden90@gmail.com</a>
+            <button
+              type="button"
+              id="contact-email-reveal"
+              class="contact-inline-button"
+              aria-controls="contact-email-output"
+              aria-expanded="false">
+              Show email address
+            </button>
+            <span id="contact-email-output" class="contact-email-output" hidden></span>
+            <button
+              type="button"
+              id="contact-email-copy"
+              class="contact-inline-button contact-copy-button"
+              hidden>
+              Copy
+            </button>
+            <noscript>
+              <span>Use the contact form or LinkedIn to reach me.</span>
+            </noscript>
           </div>
           <div class="contact-info-item">
             <i class="bi bi-linkedin contact-icon" aria-hidden="true"></i>
@@ -32,6 +51,16 @@
 
       <div class="col-md-7">
         <form id="contact-form" class="contact-form" novalidate aria-label="Contact form">
+          <div class="contact-honeypot" aria-hidden="true">
+            <label for="contact-website">Website</label>
+            <input
+              type="text"
+              id="contact-website"
+              name="website"
+              tabindex="-1"
+              autocomplete="off" />
+          </div>
+
           <div class="row g-3">
             <div class="col-sm-6">
               <label class="form-label" for="contact-name">Name</label>
@@ -82,7 +111,7 @@
               id="contact-message"
               name="message"
               class="form-control"
-              placeholder="Tell me about your project or opportunity..."
+              placeholder="Tell me about your project, collaboration, or question..."
               required
               minlength="10"
               maxlength="2000"

@@ -34,6 +34,41 @@
   color: var(--color-accent);
 }
 
+.contact-inline-button {
+  background: none;
+  border: 0;
+  color: var(--color-link);
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.contact-inline-button:hover {
+  color: var(--color-accent);
+}
+
+.contact-email-output {
+  margin-left: 0.35rem;
+}
+
+.contact-email-output a {
+  color: var(--color-link);
+  word-break: break-all;
+}
+
+.contact-email-output a:hover {
+  color: var(--color-accent);
+}
+
+.contact-copy-button {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  margin-left: 0.75rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 .contact-icon {
   margin-right: 0.5rem;
   color: var(--color-accent);
@@ -42,6 +77,14 @@
 /* Form Styles */
 .contact-form {
   width: 100%;
+}
+
+.contact-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .contact-form .form-control,

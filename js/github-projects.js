@@ -22,6 +22,23 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
+function sanitizeExternalUrl(value) {
+  const raw = typeof value === 'string' ? value.trim() : '';
+
+  if (!raw) {
+    return '';
+  }
+
+  try {
+    const url = new URL(raw);
+    return url.protocol === 'http:' || url.protocol === 'https:'
+      ? url.toString()
+      : '';
+  } catch {
+    return '';
+  }
+}
+
 function formatUpdatedDate(value) {
   const date = new Date(value);
 
@@ -81,11 +98,15 @@ function sortRepos(repos) {
 function renderRepo(repo) {
   const description = escapeHtml(repo.description || 'Project details are maintained directly on GitHub.');
   const language = escapeHtml(repo.language || 'Mixed stack');
+  const repoUrl =
+    sanitizeExternalUrl(repo.html_url) ||
+    `https://github.com/${encodeURIComponent(GITHUB_USERNAME)}`;
   const repoType = repo.fork
     ? '<span class="project-badge">Fork</span>'
     : '<span class="project-badge project-badge-original">Original</span>';
-  const homepage = typeof repo.homepage === 'string' && repo.homepage.trim().length > 0
-    ? `<a href="${escapeHtml(repo.homepage)}" target="_blank" rel="noopener noreferrer">Live site</a>`
+  const homepageUrl = sanitizeExternalUrl(repo.homepage);
+  const homepage = homepageUrl
+    ? `<a href="${escapeHtml(homepageUrl)}" target="_blank" rel="noopener noreferrer">Live site</a>`
     : '';
 
   return `
@@ -106,7 +127,7 @@ function renderRepo(repo) {
           <span>${escapeHtml(formatUpdatedDate(repo.pushed_at || repo.updated_at))}</span>
         </div>
         <div class="project-link-text">
-          <a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noopener noreferrer">View repo</a>
+          <a href="${escapeHtml(repoUrl)}" target="_blank" rel="noopener noreferrer">View repo</a>
           ${homepage}
         </div>
       </article>

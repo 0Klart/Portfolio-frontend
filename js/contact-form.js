@@ -7,6 +7,54 @@
 const API_URL =
   window.CONTACT_API_URL ||
   'https://sebban-web-app-resume-fhczdcepaed3dehj.westeurope-01.azurewebsites.net/api/contact';
+const PUBLIC_EMAIL_CHAR_CODES = [
+  115, 101, 98, 97, 115, 116, 105, 97, 110, 119, 97, 108, 108, 100, 101, 110, 57, 48,
+  64, 103, 109, 97, 105, 108, 46, 99, 111, 109,
+];
+
+function getPublicEmailAddress() {
+  return String.fromCharCode(...PUBLIC_EMAIL_CHAR_CODES);
+}
+
+function initializeDirectEmail() {
+  const revealButton = document.getElementById('contact-email-reveal');
+  const output = document.getElementById('contact-email-output');
+  const copyButton = document.getElementById('contact-email-copy');
+
+  if (!revealButton || !output || !copyButton) return;
+  if (revealButton.dataset.bound === '1') return;
+  revealButton.dataset.bound = '1';
+
+  const revealEmail = () => {
+    const email = getPublicEmailAddress();
+    const link = document.createElement('a');
+    link.href = `mailto:${email}`;
+    link.textContent = email;
+
+    output.replaceChildren(link);
+    output.hidden = false;
+    revealButton.hidden = true;
+    revealButton.setAttribute('aria-expanded', 'true');
+    copyButton.hidden = false;
+  };
+
+  revealButton.addEventListener('click', revealEmail);
+
+  copyButton.addEventListener('click', async () => {
+    const email = getPublicEmailAddress();
+    const originalLabel = copyButton.textContent;
+
+    try {
+      await navigator.clipboard.writeText(email);
+      copyButton.textContent = 'Copied';
+      window.setTimeout(() => {
+        copyButton.textContent = originalLabel;
+      }, 2000);
+    } catch {
+      window.location.href = `mailto:${email}`;
+    }
+  });
+}
 
 function initializeContactForm() {
   const form = document.getElementById('contact-form');
@@ -35,6 +83,7 @@ function initializeContactForm() {
       email: form.email.value.trim(),
       subject: form.subject.value.trim(),
       message: form.message.value.trim(),
+      website: form.website.value.trim(),
     };
 
     try {
@@ -66,7 +115,7 @@ function initializeContactForm() {
 
       status.classList.add('success');
       status.classList.remove('error');
-      status.textContent = "Message sent! I'll get back to you soon.";
+      status.textContent = 'Message sent. Thanks for reaching out.';
       form.reset();
       form.classList.remove('was-validated');
     } catch (error) {
@@ -88,6 +137,10 @@ function initializeContactForm() {
 }
 
 // Initialize after components are loaded
-document.addEventListener('componentsLoaded', initializeContactForm);
+document.addEventListener('componentsLoaded', () => {
+  initializeContactForm();
+  initializeDirectEmail();
+});
 // Fallback if page is already loaded
 initializeContactForm();
+initializeDirectEmail();
