@@ -8,6 +8,21 @@ const API_URL =
   window.CONTACT_API_URL ||
   'https://sebban-web-app-resume-fhczdcepaed3dehj.westeurope-01.azurewebsites.net/api/contact';
 
+function buildNetworkErrorMessage(apiUrl) {
+  try {
+    const pageOrigin = window.location.origin;
+    const apiOrigin = new URL(apiUrl, window.location.href).origin;
+
+    if (apiOrigin !== pageOrigin) {
+      return 'The browser blocked the request before it reached the contact service. This is usually a cross-origin (CORS) configuration issue between this site and the API.';
+    }
+  } catch {
+    // Fall back to the generic message if the URL cannot be parsed.
+  }
+
+  return 'The contact service could not be reached right now. Please try again later or reach out on LinkedIn.';
+}
+
 function initializeContactForm() {
   const form = document.getElementById('contact-form');
   const btn = document.getElementById('contact-submit');
@@ -75,11 +90,14 @@ function initializeContactForm() {
       status.classList.remove('success');
       const isNetworkError = error instanceof TypeError;
       status.textContent = isNetworkError
-        ? 'The contact service is unavailable right now. Please try again later or reach out on LinkedIn.'
+        ? buildNetworkErrorMessage(API_URL)
         : error.message || 'Something went wrong. Please try again later or reach out on LinkedIn.';
       console.error('Form submission error:', error);
       if (isNetworkError) {
         console.error('Contact API URL:', API_URL);
+        console.error(
+          'If DevTools shows a CORS error or preflightMissingAllowOriginHeader, the browser blocked the request before the API could handle it.'
+        );
       }
     } finally {
       btn.disabled = false;
