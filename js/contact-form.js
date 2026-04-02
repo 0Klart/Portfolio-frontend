@@ -8,7 +8,7 @@ const API_URL =
   window.CONTACT_API_URL ||
   'https://sebban-web-app-resume-fhczdcepaed3dehj.westeurope-01.azurewebsites.net/api/contact';
 const PUBLIC_EMAIL_CHAR_CODES = [
-  115, 101, 98, 97, 115, 116, 105, 97, 110, 119, 97, 108, 108, 100, 101, 110, 57, 48,
+  115, 101, 98, 97, 115, 116, 105, 97, 110, 119, 97, 108, 108, 100, 101, 110, 57, 54,
   64, 103, 109, 97, 105, 108, 46, 99, 111, 109,
 ];
 
