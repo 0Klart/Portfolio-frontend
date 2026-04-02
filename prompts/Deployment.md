@@ -3,9 +3,9 @@
 ## Frontend
 
 - Primary deployment target is GitHub Pages.
-- Public domain is expected to be managed in Cloudflare.
+- Public domain is managed in Cloudflare.
 - Relative asset and component paths must remain valid when hosted from either a project site path or a future custom domain.
-- If a custom domain is added later, update any explicit GitHub Pages references accordingly.
+- If the live domain changes again, update any explicit GitHub Pages references accordingly.
 
 ## Backend dependency
 

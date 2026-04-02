@@ -5,7 +5,10 @@ Static portfolio frontend built with HTML, CSS, and JavaScript.
 Current live site:
 - `https://0klart.github.io/Portfolio-frontend`
 
-Planned public domain:
+Verified custom domain:
+- `sebastianwallden.dev`
+
+Target public domain:
 - `https://www.sebastianwallden.dev`
 
 Hosting and integration:
