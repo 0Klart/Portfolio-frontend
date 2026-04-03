@@ -96,6 +96,7 @@
   font-weight: 700;
   color: var(--color-link);
   line-height: 1.2;
+  margin: 0;
 }
 
 .project-badges {
@@ -172,6 +173,13 @@
   color: var(--color-text-faint);
   font-size: 0.875rem;
   margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 @media (max-width: 768px) {

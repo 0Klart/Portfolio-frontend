@@ -35,3 +35,9 @@
   color: var(--color-accent);
   transform: translateY(-1px);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-badge:hover {
+    transform: none;
+  }
+}

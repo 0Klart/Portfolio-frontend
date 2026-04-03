@@ -30,3 +30,11 @@
 .fade-up:nth-child(4) {
   animation-delay: 0.35s;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}

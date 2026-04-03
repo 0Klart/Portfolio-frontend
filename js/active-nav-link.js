@@ -18,7 +18,7 @@ function initializeActiveNavLink() {
         navLinks.forEach(link => {
           link.removeAttribute('aria-current');
           if (link.getAttribute('href') === '#' + entry.target.id) {
-            link.setAttribute('aria-current', 'page');
+            link.setAttribute('aria-current', 'location');
           }
         });
       }

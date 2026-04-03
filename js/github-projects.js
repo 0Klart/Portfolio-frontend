@@ -98,6 +98,7 @@ function sortRepos(repos) {
 function renderRepo(repo) {
   const description = escapeHtml(repo.description || 'Project details are maintained directly on GitHub.');
   const language = escapeHtml(repo.language || 'Mixed stack');
+  const projectTitleId = `project-${repo.id}-title`;
   const repoUrl =
     sanitizeExternalUrl(repo.html_url) ||
     `https://github.com/${encodeURIComponent(GITHUB_USERNAME)}`;
@@ -110,11 +111,11 @@ function renderRepo(repo) {
     : '';
 
   return `
-    <div class="col-sm-6 col-xl-4">
-      <article class="project-card" aria-label="${escapeHtml(repo.name)} project card">
+    <div class="col-sm-6 col-xl-4" role="listitem">
+      <article class="project-card" aria-labelledby="${projectTitleId}">
         <div class="project-card-top">
           <div class="project-title-row">
-            <div class="project-name">${escapeHtml(repo.name)}</div>
+            <h3 class="project-name" id="${projectTitleId}">${escapeHtml(repo.name)}</h3>
             <div class="project-badges">
               ${repoType}
               <span class="project-badge">${language}</span>
@@ -138,6 +139,7 @@ function renderProjects(container, summary, repos, { fromCache = false } = {}) {
   const orderedRepos = sortRepos(repos);
 
   if (!orderedRepos.length) {
+    container.removeAttribute('role');
     container.innerHTML = '<div class="col-12"><p class="projects-empty">No public repositories found right now.</p></div>';
     if (summary) {
       summary.textContent = 'No public repositories were returned from GitHub.';
@@ -145,6 +147,7 @@ function renderProjects(container, summary, repos, { fromCache = false } = {}) {
     return;
   }
 
+  container.setAttribute('role', 'list');
   container.innerHTML = orderedRepos.map((repo) => renderRepo(repo)).join('');
 
   if (summary) {
@@ -189,6 +192,7 @@ async function fetchGitHubRepos() {
       return;
     }
 
+    container.removeAttribute('role');
     container.innerHTML = `
       <div class="col-12">
         <p class="projects-empty">

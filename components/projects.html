@@ -8,7 +8,7 @@
         <p class="projects-intro">
           Public repositories pulled directly from GitHub. Original work is shown first, with forks clearly labeled.
         </p>
-        <p class="projects-summary" id="projects-summary">Loading public repositories...</p>
+        <p class="projects-summary" id="projects-summary" role="status" aria-live="polite" aria-atomic="true">Loading public repositories...</p>
       </div>
       <a
         class="projects-profile-link"
@@ -19,9 +19,9 @@
       </a>
     </div>
 
-    <div id="github-projects" class="row g-3" aria-live="polite" aria-label="GitHub repositories">
+    <div id="github-projects" class="row g-3" aria-label="GitHub repositories">
       <div class="col-12 projects-loading">
-        <div class="spinner-border spinner-border-sm me-2" role="status" aria-label="Loading projects"></div>
+        <div class="spinner-border spinner-border-sm me-2" aria-hidden="true"></div>
         Loading projects...
       </div>
     </div>

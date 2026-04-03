@@ -50,8 +50,9 @@
                 placeholder="Your name"
                 required
                 aria-required="true"
+                aria-describedby="contact-name-error"
                 autocomplete="name" />
-              <div class="invalid-feedback">Please enter your name.</div>
+              <div id="contact-name-error" class="invalid-feedback">Please enter your name.</div>
             </div>
             <div class="col-sm-6">
               <label class="form-label" for="contact-email">Email</label>
@@ -63,8 +64,9 @@
                 placeholder="your@email.com"
                 required
                 aria-required="true"
+                aria-describedby="contact-email-error"
                 autocomplete="email" />
-              <div class="invalid-feedback">Please enter a valid email address.</div>
+              <div id="contact-email-error" class="invalid-feedback">Please enter a valid email address.</div>
             </div>
           </div>
 
@@ -79,8 +81,9 @@
               required
               minlength="2"
               maxlength="200"
-              aria-required="true" />
-            <div class="invalid-feedback">Please add a subject (at least 2 characters).</div>
+              aria-required="true"
+              aria-describedby="contact-subject-error" />
+            <div id="contact-subject-error" class="invalid-feedback">Please add a subject (at least 2 characters).</div>
           </div>
 
           <div class="mt-3">
@@ -93,8 +96,9 @@
               required
               minlength="10"
               maxlength="2000"
-              aria-required="true"></textarea>
-            <div class="invalid-feedback">Please write a message (at least 10 characters).</div>
+              aria-required="true"
+              aria-describedby="contact-message-error"></textarea>
+            <div id="contact-message-error" class="invalid-feedback">Please write a message (at least 10 characters).</div>
           </div>
 
           <div class="mt-4">
@@ -104,7 +108,7 @@
             </button>
           </div>
 
-          <div id="form-status" role="status" aria-live="polite" class="form-status"></div>
+          <div id="form-status" role="status" aria-live="polite" aria-atomic="true" class="form-status"></div>
         </form>
       </div>
     </div>

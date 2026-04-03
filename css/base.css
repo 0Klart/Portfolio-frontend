@@ -60,6 +60,19 @@ a:hover {
   top: 1rem;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /* ============================================================
    SECTION DIVIDER (ornamental rule)
 ============================================================ */
@@ -88,9 +101,9 @@ a:hover {
 
 .section-label span {
   font-family: var(--font-body);
-  font-size: 0.6875rem;
-  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-text-faint);
+  color: var(--color-text-muted);
   white-space: nowrap;
 }

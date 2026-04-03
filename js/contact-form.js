@@ -27,23 +27,51 @@ function initializeContactForm() {
   const form = document.getElementById('contact-form');
   const btn = document.getElementById('contact-submit');
   const status = document.getElementById('form-status');
+  const fields = form ? [...form.querySelectorAll('.form-control')] : [];
 
   if (!form || !btn || !status) return;
   if (form.dataset.bound === '1') return;
   form.dataset.bound = '1';
 
+  function syncFieldValidity(field) {
+    const invalid = !field.checkValidity();
+    field.classList.toggle('is-invalid', invalid);
+    field.toggleAttribute('aria-invalid', invalid);
+    return invalid;
+  }
+
+  function resetFieldValidity() {
+    fields.forEach((field) => {
+      field.classList.remove('is-invalid');
+      field.removeAttribute('aria-invalid');
+    });
+  }
+
+  fields.forEach((field) => {
+    field.addEventListener('input', () => {
+      if (form.classList.contains('was-validated') || field.classList.contains('is-invalid')) {
+        syncFieldValidity(field);
+      }
+    });
+  });
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    status.classList.remove('success', 'error');
+    status.textContent = '';
 
     // Bootstrap native validation
     if (!form.checkValidity()) {
       form.classList.add('was-validated');
+      const firstInvalidField = fields.find((field) => syncFieldValidity(field));
+      firstInvalidField?.focus();
       return;
     }
 
     btn.disabled = true;
     btn.textContent = 'Sending...';
-    status.textContent = '';
+    form.setAttribute('aria-busy', 'true');
+    resetFieldValidity();
 
     const payload = {
       name: form.name.value.trim(),
@@ -85,6 +113,7 @@ function initializeContactForm() {
       status.textContent = 'Message sent. Thanks for reaching out.';
       form.reset();
       form.classList.remove('was-validated');
+      resetFieldValidity();
     } catch (error) {
       status.classList.add('error');
       status.classList.remove('success');
@@ -100,6 +129,7 @@ function initializeContactForm() {
         );
       }
     } finally {
+      form.removeAttribute('aria-busy');
       btn.disabled = false;
       btn.innerHTML = 'Send Message <i class="bi bi-send ms-2" aria-hidden="true"></i>';
     }
