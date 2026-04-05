@@ -64,7 +64,7 @@
       statusUnavailable: 'Not available for work',
       eyebrow: 'Web Developer at CGI',
       bio: 'Full-stack developer and IT consultant based in Orebro, Sweden. Building client-facing and internal business systems with <strong>C# .NET</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, <strong>Blazor</strong>, and <strong>Azure</strong>.',
-      ctaProjects: 'View Projects',
+      ctaProjects: 'View Featured Work',
       ctaContact: 'Get In Touch',
     },
     recruiter: {
@@ -162,8 +162,8 @@
     experience: {
       label: 'Background',
       heading: 'Roles, consulting assignments, and certifications.',
-      sidePanelLabel: 'Selected consulting projects',
-      sidePanelTitle: 'Selected Consulting Projects',
+      sidePanelLabel: 'Additional delivery notes',
+      sidePanelTitle: 'Additional Delivery Notes',
       items: {
         cgi: {
           title: 'Web Developer',
@@ -225,15 +225,72 @@
         fortifikationsverketText:
           'Managed and further developed an archive system, upgraded multiple systems to more modern .NET, and built CI/CD pipelines.',
         carnegieMeta: 'Feb 2020 - Jan 2022 via Infozone Sverige',
-        carnegieText: "Managed one of Carnegie's internal intranets.",
+        carnegieText: "Maintained one of Carnegie's internal intranets in an enterprise environment with ongoing delivery needs.",
         sjMeta: 'Feb 2020 - Jan 2022 via Infozone Sverige',
-        sjText: "Managed one of SJ's internal intranets.",
+        sjText: "Maintained one of SJ's internal intranets as part of a longer-running internal platform engagement.",
       },
+    },
+    caseStudies: {
+      label: 'Featured Work',
+      heading: 'Selected case studies from public-sector delivery, modernization, and public product work.',
+      intro:
+        'A few representative examples that show the kind of systems, delivery environments, and engineering problems I have worked with publicly.',
+      labels: {
+        context: 'Context',
+        role: 'Role',
+        build: 'What I built',
+        outcome: 'Outcome',
+        stack: 'Stack',
+      },
+      cards: {
+        decision: {
+          tag: 'Public sector',
+          title: 'Decision systems for taxes and fees',
+          context:
+            'Worked in the Transportstyrelsen decision systems area through a consulting assignment at Consid and later as a system developer in the same environment.',
+          role:
+            'Consultant and system developer contributing to continued delivery in a domain with complex rules, workflows, and long-lived systems.',
+          build:
+            'Developed and managed systems with .NET, SQL, Blazor, test-driven development, and Scrum-based collaboration.',
+          outcome:
+            'Supported stable delivery in a decision-heavy product area where correctness, maintainability, and steady iteration matter.',
+          stack: '.NET, SQL, Blazor, TDD, Scrum',
+        },
+        modernization: {
+          tag: 'Modernization',
+          title: 'Archive and intranet platform modernization',
+          context:
+            'Worked across public client and internal platform environments at Infozone Sverige, including archive systems and intranet solutions.',
+          role:
+            'System developer responsible for ongoing maintenance, modernization, and delivery improvements across several long-lived applications.',
+          build:
+            'Upgraded systems to newer .NET versions, built CI/CD pipelines, and maintained internal platforms for clients such as Fortifikationsverket, Carnegie, and SJ.',
+          outcome:
+            'Reduced delivery friction, improved maintainability, and helped older internal systems keep moving without disruptive rewrites.',
+          stack: '.NET, CI/CD, SQL, Azure, Jira',
+        },
+        publicBuild: {
+          tag: 'Public build',
+          title: 'Portfolio platform with live GitHub proof',
+          context:
+            'Built and maintain this portfolio as a public-facing product rather than a static brochure.',
+          role:
+            'Designer and developer owning structure, frontend implementation, content system, and deployment-ready polish.',
+          build:
+            'Created a component-based frontend with bilingual content, theme preferences, GitHub-powered project data, and an accessible contact flow.',
+          outcome:
+            'Keeps the portfolio current with less manual upkeep and gives recruiters a faster overview of both technical range and presentation quality.',
+          stack: 'HTML, CSS, JavaScript, Bootstrap, GitHub API',
+        },
+      },
+      repoLabel: 'Public repository',
+      repoCta: 'View repository',
     },
     projects: {
       label: 'Public Projects',
       heading: 'Live from GitHub',
-      intro: 'Public repositories pulled directly from GitHub. Original work is shown first, with forks clearly labeled.',
+      intro:
+        'Supporting proof from GitHub. Public repositories are pulled directly from GitHub, with original work shown first and forks clearly labeled.',
       loading: 'Loading public repositories...',
       viewAll: 'View all on GitHub',
       repoListLabel: 'GitHub repositories',
@@ -343,7 +400,7 @@
       statusUnavailable: 'Inte tillgänglig för nya uppdrag',
       eyebrow: 'Webbutvecklare på CGI',
       bio: 'Fullstackutvecklare och IT-konsult i Örebro. Bygger kundnära och interna verksamhetssystem med <strong>C# .NET</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, <strong>Blazor</strong> och <strong>Azure</strong>.',
-      ctaProjects: 'Visa projekt',
+      ctaProjects: 'Se utvalt arbete',
       ctaContact: 'Kontakta mig',
     },
     recruiter: {
@@ -440,8 +497,8 @@
     experience: {
       label: 'Bakgrund',
       heading: 'Roller, konsultuppdrag och certifieringar.',
-      sidePanelLabel: 'Utvalda konsultprojekt',
-      sidePanelTitle: 'Utvalda konsultprojekt',
+      sidePanelLabel: 'Fler leveransexempel',
+      sidePanelTitle: 'Fler leveransexempel',
       items: {
         cgi: {
           title: 'Webbutvecklare',
@@ -502,15 +559,72 @@
         fortifikationsverketText:
           'Förvaltade och vidareutvecklade ett arkivsystem, uppgraderade flera system till modernare .NET och byggde CI/CD-pipelines.',
         carnegieMeta: 'Feb 2020 - Jan 2022 via Infozone Sverige',
-        carnegieText: 'Förvaltade ett av Carnegies interna intranät.',
+        carnegieText: 'Förvaltade ett av Carnegies interna intranät i en företagsmiljö med löpande leveransbehov.',
         sjMeta: 'Feb 2020 - Jan 2022 via Infozone Sverige',
-        sjText: 'Förvaltade ett av SJ:s interna intranät.',
+        sjText: 'Förvaltade ett av SJ:s interna intranät som del av ett längre engagemang kring interna plattformar.',
       },
+    },
+    caseStudies: {
+      label: 'Utvalt arbete',
+      heading: 'Utvalda case från offentlig leverans, modernisering och publikt produktarbete.',
+      intro:
+        'Några representativa exempel som visar vilka system, leveransmiljöer och tekniska problem jag har arbetat med offentligt.',
+      labels: {
+        context: 'Kontext',
+        role: 'Roll',
+        build: 'Det jag byggde',
+        outcome: 'Resultat',
+        stack: 'Teknik',
+      },
+      cards: {
+        decision: {
+          tag: 'Offentlig sektor',
+          title: 'Beslutssystem för skatter och avgifter',
+          context:
+            'Arbetade i Transportstyrelsens område för beslutssystem genom ett konsultuppdrag via Consid och senare som systemutvecklare i samma miljö.',
+          role:
+            'Konsult och systemutvecklare med fokus på fortsatt leverans i en domän med komplexa regler, arbetsflöden och långlivade system.',
+          build:
+            'Utvecklade och förvaltade system med .NET, SQL, Blazor, testdriven utveckling och Scrum-baserat samarbete.',
+          outcome:
+            'Bidrog till stabil leverans i ett beslutstungt produktområde där korrekthet, förvaltningsbarhet och jämn iteration är avgörande.',
+          stack: '.NET, SQL, Blazor, TDD, Scrum',
+        },
+        modernization: {
+          tag: 'Modernisering',
+          title: 'Modernisering av arkiv- och intranätsplattformar',
+          context:
+            'Arbetade i offentliga kundmiljöer och interna plattformar på Infozone Sverige, inklusive arkivsystem och intranätlösningar.',
+          role:
+            'Systemutvecklare med ansvar för löpande förvaltning, modernisering och leveransförbättringar i flera långlivade applikationer.',
+          build:
+            'Uppgraderade system till nyare versioner av .NET, byggde CI/CD-pipelines och förvaltade interna plattformar för kunder som Fortifikationsverket, Carnegie och SJ.',
+          outcome:
+            'Minskade leveransfriktion, förbättrade förvaltningsbarheten och hjälpte äldre interna system att fortsätta utvecklas utan stora omskrivningar.',
+          stack: '.NET, CI/CD, SQL, Azure, Jira',
+        },
+        publicBuild: {
+          tag: 'Publikt bygge',
+          title: 'Portföljplattform med GitHub som levande bevis',
+          context:
+            'Byggde och förvaltar den här portföljen som en publik produkt i stället för en statisk broschyryta.',
+          role:
+            'Designer och utvecklare med ansvar för struktur, frontendimplementation, innehållssystem och presentationskvalitet inför produktion.',
+          build:
+            'Skapade en komponentbaserad frontend med två språk, temainställningar, GitHub-driven projektdata och ett tillgängligt kontaktflöde.',
+          outcome:
+            'Håller portföljen aktuell med mindre manuellt arbete och ger rekryterare en snabbare överblick över både teknisk bredd och presentationskvalitet.',
+          stack: 'HTML, CSS, JavaScript, Bootstrap, GitHub API',
+        },
+      },
+      repoLabel: 'Publikt repo',
+      repoCta: 'Visa repo',
     },
     projects: {
       label: 'Publika projekt',
       heading: 'Direkt från GitHub',
-      intro: 'Publika repositories hämtade direkt från GitHub. Eget arbete visas först och forks är tydligt markerade.',
+      intro:
+        'Kompletterande underlag från GitHub. Publika repositories hämtas direkt från GitHub, där eget arbete visas först och forks markeras tydligt.',
       loading: 'Laddar publika repositories...',
       viewAll: 'Visa allt på GitHub',
       repoListLabel: 'GitHub-repositories',

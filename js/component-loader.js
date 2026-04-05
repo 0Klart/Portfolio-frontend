@@ -32,6 +32,7 @@ async function loadAllComponents() {
     { path: 'components/about.html', target: 'about-container' },
     { path: 'components/skills.html', target: 'skills-container' },
     { path: 'components/experience.html', target: 'experience-container' },
+    { path: 'components/case-studies.html', target: 'case-studies-container' },
     { path: 'components/projects.html', target: 'projects-container' },
     { path: 'components/contact.html', target: 'contact-container' },
     { path: 'components/footer.html', target: 'footer-container' },
