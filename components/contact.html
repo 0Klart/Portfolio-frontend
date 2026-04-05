@@ -1,12 +1,12 @@
 <!-- Contact Section -->
 <section id="contact" aria-labelledby="contact-heading">
   <div class="container-lg">
-    <div class="section-label"><span>Get In Touch</span></div>
+    <div class="section-label"><span data-i18n="contact.label">Get In Touch</span></div>
 
     <div class="row align-items-start g-5">
       <div class="col-md-5">
-        <h2 id="contact-heading">Let's<br />connect.</h2>
-        <p class="contact-intro">
+        <h2 id="contact-heading" data-i18n="contact.heading">Let's<br />connect.</h2>
+        <p class="contact-intro" data-i18n="contact.intro">
           I currently work at CGI and am not looking to change roles right now, but you are very welcome to reach out
           through the form below or connect through LinkedIn and GitHub. This site keeps the direct contact path
           public without exposing private documents.
@@ -14,23 +14,28 @@
         <div class="contact-info-list mt-4">
           <div class="contact-info-item">
             <i class="bi bi-linkedin contact-icon" aria-hidden="true"></i>
-            <a href="https://www.linkedin.com/in/sebastianwallden/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
+            <a href="https://www.linkedin.com/in/sebastianwallden/" target="_blank" rel="noopener noreferrer" data-i18n="contact.linkedInProfile">LinkedIn profile</a>
           </div>
           <div class="contact-info-item">
             <i class="bi bi-github contact-icon" aria-hidden="true"></i>
-            <a href="https://github.com/0Klart" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+            <a href="https://github.com/0Klart" target="_blank" rel="noopener noreferrer" data-i18n="contact.githubProfile">GitHub profile</a>
           </div>
           <div class="contact-info-item">
             <i class="bi bi-geo-alt contact-icon" aria-hidden="true"></i>
-            Orebro, Sweden
+            <span data-i18n="contact.location">Orebro, Sweden</span>
           </div>
         </div>
       </div>
 
       <div class="col-md-7">
-        <form id="contact-form" class="contact-form" novalidate aria-label="Contact form">
+        <form
+          id="contact-form"
+          class="contact-form"
+          novalidate
+          aria-label="Contact form"
+          data-i18n-attr="aria-label:contact.formLabel">
           <div class="contact-honeypot" aria-hidden="true">
-            <label for="contact-website">Website</label>
+            <label for="contact-website" data-i18n="contact.honeypotLabel">Website</label>
             <input
               type="text"
               id="contact-website"
@@ -41,7 +46,7 @@
 
           <div class="row g-3">
             <div class="col-sm-6">
-              <label class="form-label" for="contact-name">Name</label>
+              <label class="form-label" for="contact-name" data-i18n="contact.form.nameLabel">Name</label>
               <input
                 type="text"
                 id="contact-name"
@@ -51,11 +56,12 @@
                 required
                 aria-required="true"
                 aria-describedby="contact-name-error"
-                autocomplete="name" />
-              <div id="contact-name-error" class="invalid-feedback">Please enter your name.</div>
+                autocomplete="name"
+                data-i18n-attr="placeholder:contact.form.namePlaceholder" />
+              <div id="contact-name-error" class="invalid-feedback" data-i18n="contact.form.errors.name">Please enter your name.</div>
             </div>
             <div class="col-sm-6">
-              <label class="form-label" for="contact-email">Email</label>
+              <label class="form-label" for="contact-email" data-i18n="contact.form.emailLabel">Email</label>
               <input
                 type="email"
                 id="contact-email"
@@ -65,13 +71,14 @@
                 required
                 aria-required="true"
                 aria-describedby="contact-email-error"
-                autocomplete="email" />
-              <div id="contact-email-error" class="invalid-feedback">Please enter a valid email address.</div>
+                autocomplete="email"
+                data-i18n-attr="placeholder:contact.form.emailPlaceholder" />
+              <div id="contact-email-error" class="invalid-feedback" data-i18n="contact.form.errors.emailValid">Please enter a valid email address.</div>
             </div>
           </div>
 
           <div class="mt-3">
-            <label class="form-label" for="contact-subject">Subject</label>
+            <label class="form-label" for="contact-subject" data-i18n="contact.form.subjectLabel">Subject</label>
             <input
               type="text"
               id="contact-subject"
@@ -82,12 +89,13 @@
               minlength="2"
               maxlength="200"
               aria-required="true"
-              aria-describedby="contact-subject-error" />
-            <div id="contact-subject-error" class="invalid-feedback">Please add a subject (at least 2 characters).</div>
+              aria-describedby="contact-subject-error"
+              data-i18n-attr="placeholder:contact.form.subjectPlaceholder" />
+            <div id="contact-subject-error" class="invalid-feedback" data-i18n="contact.form.errors.subject">Please add a subject (at least 2 characters).</div>
           </div>
 
           <div class="mt-3">
-            <label class="form-label" for="contact-message">Message</label>
+            <label class="form-label" for="contact-message" data-i18n="contact.form.messageLabel">Message</label>
             <textarea
               id="contact-message"
               name="message"
@@ -97,13 +105,14 @@
               minlength="10"
               maxlength="2000"
               aria-required="true"
-              aria-describedby="contact-message-error"></textarea>
-            <div id="contact-message-error" class="invalid-feedback">Please write a message (at least 10 characters).</div>
+              aria-describedby="contact-message-error"
+              data-i18n-attr="placeholder:contact.form.messagePlaceholder"></textarea>
+            <div id="contact-message-error" class="invalid-feedback" data-i18n="contact.form.errors.message">Please write a message (at least 10 characters).</div>
           </div>
 
           <div class="mt-4">
             <button type="submit" class="btn-primary-custom" id="contact-submit">
-              Send Message
+              <span data-contact-submit-label data-i18n="contact.form.submit">Send Message</span>
               <i class="bi bi-send ms-2" aria-hidden="true"></i>
             </button>
           </div>

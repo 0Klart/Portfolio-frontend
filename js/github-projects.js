@@ -13,6 +13,20 @@ const GITHUB_REPOS_URL =
 const GITHUB_CACHE_KEY = `github-projects:${GITHUB_USERNAME}:v3`;
 const GITHUB_CACHE_TTL_MS = 30 * 60 * 1000;
 
+let lastRenderState = {
+  type: 'idle',
+  repos: [],
+  fromCache: false,
+};
+
+function translate(key, variables) {
+  return window.PortfolioPreferences?.t(key, variables) || key;
+}
+
+function getLocaleTag() {
+  return window.PortfolioPreferences?.getLocale?.() === 'sv' ? 'sv-SE' : 'en-US';
+}
+
 function escapeHtml(value) {
   return String(value ?? '')
     .replace(/&/g, '&amp;')
@@ -43,14 +57,16 @@ function formatUpdatedDate(value) {
   const date = new Date(value);
 
   if (Number.isNaN(date.getTime())) {
-    return 'Recently updated';
+    return translate('projects.recentlyUpdated');
   }
 
-  return `Updated ${date.toLocaleDateString('en-US', {
+  const formattedDate = new Intl.DateTimeFormat(getLocaleTag(), {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
-  })}`;
+  }).format(date);
+
+  return translate('projects.updatedOn', { date: formattedDate });
 }
 
 function readRepoCache() {
@@ -96,18 +112,18 @@ function sortRepos(repos) {
 }
 
 function renderRepo(repo) {
-  const description = escapeHtml(repo.description || 'Project details are maintained directly on GitHub.');
-  const language = escapeHtml(repo.language || 'Mixed stack');
+  const description = escapeHtml(repo.description || translate('projects.repo.defaultDescription'));
+  const language = escapeHtml(repo.language || translate('projects.repo.mixedStack'));
   const projectTitleId = `project-${repo.id}-title`;
   const repoUrl =
     sanitizeExternalUrl(repo.html_url) ||
     `https://github.com/${encodeURIComponent(GITHUB_USERNAME)}`;
   const repoType = repo.fork
-    ? '<span class="project-badge">Fork</span>'
-    : '<span class="project-badge project-badge-original">Original</span>';
+    ? `<span class="project-badge">${translate('projects.repo.fork')}</span>`
+    : `<span class="project-badge project-badge-original">${translate('projects.repo.original')}</span>`;
   const homepageUrl = sanitizeExternalUrl(repo.homepage);
   const homepage = homepageUrl
-    ? `<a href="${escapeHtml(homepageUrl)}" target="_blank" rel="noopener noreferrer">Live site</a>`
+    ? `<a href="${escapeHtml(homepageUrl)}" target="_blank" rel="noopener noreferrer">${translate('projects.repo.liveSite')}</a>`
     : '';
 
   return `
@@ -128,7 +144,7 @@ function renderRepo(repo) {
           <span>${escapeHtml(formatUpdatedDate(repo.pushed_at || repo.updated_at))}</span>
         </div>
         <div class="project-link-text">
-          <a href="${escapeHtml(repoUrl)}" target="_blank" rel="noopener noreferrer">View repo</a>
+          <a href="${escapeHtml(repoUrl)}" target="_blank" rel="noopener noreferrer">${translate('projects.repo.viewRepo')}</a>
           ${homepage}
         </div>
       </article>
@@ -139,19 +155,60 @@ function renderProjects(container, summary, repos, { fromCache = false } = {}) {
   const orderedRepos = sortRepos(repos);
 
   if (!orderedRepos.length) {
+    lastRenderState = { type: 'empty', repos: [], fromCache: false };
     container.removeAttribute('role');
-    container.innerHTML = '<div class="col-12"><p class="projects-empty">No public repositories found right now.</p></div>';
+    container.innerHTML = `<div class="col-12"><p class="projects-empty">${translate('projects.noRepos')}</p></div>`;
     if (summary) {
-      summary.textContent = 'No public repositories were returned from GitHub.';
+      summary.textContent = translate('projects.noReposSummary');
     }
     return;
   }
 
+  lastRenderState = { type: 'repos', repos: orderedRepos, fromCache };
   container.setAttribute('role', 'list');
   container.innerHTML = orderedRepos.map((repo) => renderRepo(repo)).join('');
 
   if (summary) {
-    summary.textContent = `Showing ${orderedRepos.length} public repositories from GitHub${fromCache ? ' (cached)' : ''}.`;
+    summary.textContent = translate('projects.summaryCount', {
+      count: orderedRepos.length,
+      cachedSuffix: fromCache ? translate('projects.summaryCachedSuffix') : '',
+    });
+  }
+}
+
+function renderError(container, summary) {
+  lastRenderState = { type: 'error', repos: [], fromCache: false };
+  container.removeAttribute('role');
+  container.innerHTML = `
+    <div class="col-12">
+      <p class="projects-empty">${translate('projects.unavailable')}</p>
+    </div>`;
+
+  if (summary) {
+    summary.textContent = translate('projects.unavailableSummary');
+  }
+}
+
+function rerenderProjectsForLocale() {
+  const container = document.getElementById('github-projects');
+  const summary = document.getElementById('projects-summary');
+
+  if (!container) {
+    return;
+  }
+
+  if (lastRenderState.type === 'repos') {
+    renderProjects(container, summary, lastRenderState.repos, { fromCache: lastRenderState.fromCache });
+    return;
+  }
+
+  if (lastRenderState.type === 'empty') {
+    renderProjects(container, summary, [], { fromCache: false });
+    return;
+  }
+
+  if (lastRenderState.type === 'error') {
+    renderError(container, summary);
   }
 }
 
@@ -192,22 +249,11 @@ async function fetchGitHubRepos() {
       return;
     }
 
-    container.removeAttribute('role');
-    container.innerHTML = `
-      <div class="col-12">
-        <p class="projects-empty">
-          Could not load GitHub projects.
-          <a href="https://github.com/${GITHUB_USERNAME}?tab=repositories" target="_blank" rel="noopener noreferrer">View the full profile instead.</a>
-        </p>
-      </div>`;
-
-    if (summary) {
-      summary.textContent = 'GitHub is unavailable right now, but the full profile link is still available.';
-    }
-
+    renderError(container, summary);
     console.error('GitHub project load failed:', error);
   }
 }
 
 document.addEventListener('componentsLoaded', fetchGitHubRepos);
+window.addEventListener('portfolio:localechange', rerenderProjectsForLocale);
 fetchGitHubRepos();

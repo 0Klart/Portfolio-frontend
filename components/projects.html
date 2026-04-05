@@ -1,28 +1,29 @@
 <!-- Projects Section -->
 <section id="projects" aria-labelledby="projects-heading">
   <div class="container-lg">
-    <div class="section-label"><span>Public Projects</span></div>
+    <div class="section-label"><span data-i18n="projects.label">Public Projects</span></div>
     <div class="projects-heading-row">
       <div>
-        <h2 class="projects-heading" id="projects-heading">Live from GitHub</h2>
-        <p class="projects-intro">
+        <h2 class="projects-heading" id="projects-heading" data-i18n="projects.heading">Live from GitHub</h2>
+        <p class="projects-intro" data-i18n="projects.intro">
           Public repositories pulled directly from GitHub. Original work is shown first, with forks clearly labeled.
         </p>
-        <p class="projects-summary" id="projects-summary" role="status" aria-live="polite" aria-atomic="true">Loading public repositories...</p>
+        <p class="projects-summary" id="projects-summary" role="status" aria-live="polite" aria-atomic="true" data-i18n="projects.loading">Loading public repositories...</p>
       </div>
       <a
         class="projects-profile-link"
         href="https://github.com/0Klart"
         target="_blank"
         rel="noopener noreferrer">
-        View all on GitHub <i class="bi bi-arrow-up-right ms-1" aria-hidden="true"></i>
+        <span data-i18n="projects.viewAll">View all on GitHub</span>
+        <i class="bi bi-arrow-up-right ms-1" aria-hidden="true"></i>
       </a>
     </div>
 
-    <div id="github-projects" class="row g-3" aria-label="GitHub repositories">
+    <div id="github-projects" class="row g-3" aria-label="GitHub repositories" data-i18n-attr="aria-label:projects.repoListLabel">
       <div class="col-12 projects-loading">
         <div class="spinner-border spinner-border-sm me-2" aria-hidden="true"></div>
-        Loading projects...
+        <span data-i18n="projects.loading">Loading public repositories...</span>
       </div>
     </div>
   </div>
