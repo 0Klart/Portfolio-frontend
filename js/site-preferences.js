@@ -67,6 +67,42 @@
       ctaProjects: 'View Projects',
       ctaContact: 'Get In Touch',
     },
+    recruiter: {
+      label: 'Recruiter Snapshot',
+      heading: 'A quick overview for recruiters and hiring managers.',
+      intro:
+        'Full-stack developer with consulting and public-sector delivery experience across business systems, modernization, and client-facing web platforms.',
+      ctaCv: 'Request CV',
+      ctaWork: 'View Featured Work',
+      note: 'CV is shared privately after contact and a relevant conversation.',
+      gridLabel: 'Recruiter quick facts',
+      cards: {
+        current: {
+          label: 'Current Role',
+          value: 'Web Developer at CGI',
+        },
+        location: {
+          label: 'Base',
+          value: 'Orebro, Sweden',
+        },
+        delivery: {
+          label: 'Work Style',
+          value: 'Hybrid delivery and remote collaboration',
+        },
+        stack: {
+          label: 'Core Stack',
+          value: 'C# .NET, SQL, JavaScript, Blazor, Azure',
+        },
+        focus: {
+          label: 'Strengths',
+          value: 'Business systems, modernization, public-sector delivery',
+        },
+        certifications: {
+          label: 'Certifications',
+          value: 'Two Optimizely certifications valid through March 2028',
+        },
+      },
+    },
     about: {
       label: 'About Me',
       heading:
@@ -309,6 +345,42 @@
       bio: 'Fullstackutvecklare och IT-konsult i Örebro. Bygger kundnära och interna verksamhetssystem med <strong>C# .NET</strong>, <strong>JavaScript</strong>, <strong>SQL</strong>, <strong>Blazor</strong> och <strong>Azure</strong>.',
       ctaProjects: 'Visa projekt',
       ctaContact: 'Kontakta mig',
+    },
+    recruiter: {
+      label: 'Snabbfakta',
+      heading: 'En snabb översikt för rekryterare och hiring managers.',
+      intro:
+        'Fullstackutvecklare med erfarenhet av konsultleverans och offentlig sektor inom verksamhetssystem, modernisering och kundnära webbplattformar.',
+      ctaCv: 'Kontakta för CV',
+      ctaWork: 'Se utvalt arbete',
+      note: 'CV delas privat efter kontakt och en relevant dialog.',
+      gridLabel: 'Snabbfakta för rekryterare',
+      cards: {
+        current: {
+          label: 'Nuvarande roll',
+          value: 'Webbutvecklare på CGI',
+        },
+        location: {
+          label: 'Bas',
+          value: 'Örebro, Sverige',
+        },
+        delivery: {
+          label: 'Arbetssätt',
+          value: 'Hybrid leverans och samarbete på distans',
+        },
+        stack: {
+          label: 'Kärnstack',
+          value: 'C# .NET, SQL, JavaScript, Blazor, Azure',
+        },
+        focus: {
+          label: 'Styrkor',
+          value: 'Verksamhetssystem, modernisering och offentlig leverans',
+        },
+        certifications: {
+          label: 'Certifieringar',
+          value: 'Två Optimizely-certifieringar giltiga till mars 2028',
+        },
+      },
     },
     about: {
       label: 'Om mig',

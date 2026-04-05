@@ -28,6 +28,7 @@ async function loadAllComponents() {
     { path: 'components/topbar.html', target: 'top-bar-container' },
     { path: 'components/navbar.html', target: 'navbar-container' },
     { path: 'components/hero.html', target: 'hero-container' },
+    { path: 'components/recruiter-snapshot.html', target: 'recruiter-snapshot-container' },
     { path: 'components/about.html', target: 'about-container' },
     { path: 'components/skills.html', target: 'skills-container' },
     { path: 'components/experience.html', target: 'experience-container' },
