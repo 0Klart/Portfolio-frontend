@@ -13,6 +13,7 @@ body {
   font-weight: 300;
   font-size: 0.9375rem; /* 15px */
   line-height: 1.75;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -49,7 +50,7 @@ a:hover {
   left: 1rem;
   z-index: 9999;
   background: var(--color-accent);
-  color: var(--color-surface-deep);
+  color: var(--color-accent-contrast);
   padding: 0.5rem 1rem;
   font-weight: 600;
   border-radius: var(--radius-sm);

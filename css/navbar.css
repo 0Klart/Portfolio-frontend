@@ -3,9 +3,18 @@
 ============================================================ */
 
 #main-nav {
-  background: rgba(26, 34, 53, 0.95);
+  background: var(--color-navbar-bg);
   border-bottom: 1px solid var(--color-border);
   backdrop-filter: blur(10px);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+#main-nav .container-lg {
+  gap: 1rem;
+}
+
+.navbar-collapse {
+  flex-grow: 1;
 }
 
 .navbar-brand {
@@ -31,16 +40,90 @@
 }
 
 .nav-link:hover,
-.nav-link[aria-current="location"] {
+.nav-link[aria-current='location'] {
   color: var(--color-text) !important;
   border-bottom-color: var(--color-accent);
+}
+
+.nav-preferences {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-preferences-desktop {
+  margin-left: auto;
+}
+
+.nav-preferences-mobile {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.nav-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-control-bg);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.9rem;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s, background-color 0.2s;
+}
+
+.nav-theme-toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.nav-theme-toggle i {
+  font-size: 0.875rem;
+}
+
+.nav-language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-control-bg);
+  padding: 0.2rem;
+}
+
+.nav-language-option {
+  min-width: 2.75rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 0.7rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-language-option:hover {
+  color: var(--color-text);
+}
+
+.nav-language-option.is-active {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
 }
 
 .btn-nav-cta {
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   color: var(--color-accent);
-  border: 1px solid rgba(200, 169, 110, 0.35);
+  border: 1px solid var(--color-accent-border);
   padding: 0.375rem 1rem;
   border-radius: var(--radius-sm);
   transition: all 0.2s;
@@ -50,12 +133,28 @@
 
 .btn-nav-cta:hover {
   background: var(--color-accent);
-  color: var(--color-surface-deep);
+  color: var(--color-accent-contrast);
   text-decoration: none;
 }
 
 @media (max-width: 768px) {
   .navbar-nav .nav-link {
     margin: 0;
+  }
+
+  .nav-preferences-mobile {
+    align-items: stretch;
+  }
+
+  .nav-theme-toggle,
+  .nav-language-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-theme-toggle:hover {
+    transform: none;
   }
 }

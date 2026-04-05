@@ -1,24 +1,66 @@
 /* ============================================================
-   DESIGN TOKENS — change your entire color scheme here only
+   DESIGN TOKENS - change your theme palettes here only
 ============================================================ */
 
 :root {
-  --color-bg:           #181e2c;   /* page background        */
-  --color-surface:      #1a2235;   /* cards, navbar          */
-  --color-surface-deep: #111622;   /* top bar, footer        */
-  --color-border:       #1f2a3e;   /* all borders            */
-  --color-accent:       #c8a96e;   /* gold — buttons, labels */
-  --color-accent-hover: #b8944e;   /* gold hover state       */
-  --color-text:         #dce4f0;   /* primary text           */
-  --color-text-muted:   #8ba0c2;   /* secondary text         */
-  --color-text-faint:   #7f93b3;   /* labels, metadata       */
-  --color-link:         #9ab0cc;   /* inline links           */
-  --color-success:      #4ade80;   /* success state          */
-
   --font-heading: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
 
-  --radius-sm:   3px;
-  --radius-md:   6px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
   --section-gap: 5rem;
+}
+
+html[data-theme='midnight'] {
+  --color-bg: #181e2c;
+  --color-surface: #1a2235;
+  --color-surface-deep: #111622;
+  --color-border: #1f2a3e;
+  --color-accent: #c8a96e;
+  --color-accent-hover: #b8944e;
+  --color-accent-contrast: #111622;
+  --color-text: #dce4f0;
+  --color-text-muted: #8ba0c2;
+  --color-text-faint: #7f93b3;
+  --color-link: #9ab0cc;
+  --color-success: #4ade80;
+  --color-warning: #f59e0b;
+  --color-danger: #f87171;
+  --color-navbar-bg: rgba(26, 34, 53, 0.95);
+  --color-footer-bg: #0d1220;
+  --color-panel-bg: rgba(13, 18, 32, 0.55);
+  --color-hero-ring: rgba(31, 42, 62, 0.5);
+  --color-hero-ring-soft: rgba(31, 42, 62, 0.25);
+  --color-accent-border: rgba(200, 169, 110, 0.35);
+  --color-accent-border-soft: rgba(200, 169, 110, 0.25);
+  --color-accent-border-strong: rgba(200, 169, 110, 0.4);
+  --color-shadow-elevated: rgba(0, 0, 0, 0.35);
+  --color-control-bg: rgba(17, 22, 34, 0.72);
+}
+
+html[data-theme='linen'] {
+  --color-bg: #f3ede2;
+  --color-surface: #fcf8f2;
+  --color-surface-deep: #e3d8c7;
+  --color-border: #d4c3ad;
+  --color-accent: #8b6738;
+  --color-accent-hover: #6e502b;
+  --color-accent-contrast: #fcf8f2;
+  --color-text: #2f3642;
+  --color-text-muted: #5f6977;
+  --color-text-faint: #7a8490;
+  --color-link: #4f6989;
+  --color-success: #218454;
+  --color-warning: #c27b1b;
+  --color-danger: #c05650;
+  --color-navbar-bg: rgba(252, 248, 242, 0.92);
+  --color-footer-bg: #ddd0bc;
+  --color-panel-bg: rgba(255, 250, 244, 0.88);
+  --color-hero-ring: rgba(139, 103, 56, 0.22);
+  --color-hero-ring-soft: rgba(139, 103, 56, 0.12);
+  --color-accent-border: rgba(139, 103, 56, 0.3);
+  --color-accent-border-soft: rgba(139, 103, 56, 0.2);
+  --color-accent-border-strong: rgba(139, 103, 56, 0.4);
+  --color-shadow-elevated: rgba(77, 58, 33, 0.16);
+  --color-control-bg: rgba(255, 252, 247, 0.92);
 }

@@ -41,6 +41,10 @@ async function loadAllComponents() {
     components.map(({ path, target }) => loadComponent(path, target))
   );
 
+  if (window.PortfolioPreferences?.initialize) {
+    window.PortfolioPreferences.initialize(document);
+  }
+
   // Dispatch custom event when all components are loaded
   document.dispatchEvent(new CustomEvent('componentsLoaded'));
 }

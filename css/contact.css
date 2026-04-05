@@ -83,14 +83,14 @@
 
 .contact-form .invalid-feedback {
   display: none;
-  color: #f87171;
+  color: var(--color-danger);
   font-size: 0.75rem;
   margin-top: 0.25rem;
 }
 
 .contact-form .form-control.is-invalid,
 .contact-form .form-control[aria-invalid="true"] {
-  border-color: #f87171;
+  border-color: var(--color-danger);
 }
 
 .contact-form .form-control.is-invalid ~ .invalid-feedback,
@@ -112,5 +112,5 @@
 }
 
 .form-status.error {
-  color: #f87171;
+  color: var(--color-danger);
 }

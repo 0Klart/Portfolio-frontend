@@ -16,7 +16,7 @@
   content: '';
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(31, 42, 62, 0.5);
+  border: 1px solid var(--color-hero-ring);
   pointer-events: none;
 }
 
@@ -32,7 +32,7 @@
   height: 700px;
   bottom: -200px;
   right: -120px;
-  border-color: rgba(31, 42, 62, 0.25);
+  border-color: var(--color-hero-ring-soft);
 }
 
 .hero-avatar {
@@ -65,7 +65,7 @@
   right: -4px;
   width: 16px;
   height: 16px;
-  background: #f59e0b;
+  background: var(--color-warning);
   border-radius: 50%;
   border: 3px solid var(--color-bg);
 }

@@ -3,11 +3,12 @@
 ============================================================ */
 
 footer {
-  background: #0d1220;
+  background: var(--color-footer-bg);
   border-top: 1px solid var(--color-border);
   font-family: var(--font-body);
   font-size: 0.75rem;
   color: var(--color-text-faint);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 footer a {
